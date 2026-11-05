@@ -1,0 +1,12 @@
+<FileList>
+  <File Reference="DevExpress.XtraNavBar.v26.1.dll">
+    <ToolboxItems UIFramework="WinForms" VSCategory="DX.26.1: Navigation &amp; Layout">
+      <Item Type="DevExpress.XtraNavBar.NavBarControl" />
+    </ToolboxItems>
+  </File>
+  <File Reference="DevExpress.XtraWizard.v26.1.dll">
+    <ToolboxItems UIFramework="WinForms" VSCategory="DX.26.1: Navigation &amp; Layout">
+      <Item Type="DevExpress.XtraWizard.WizardControl" />
+    </ToolboxItems>
+  </File>
+</FileList>
