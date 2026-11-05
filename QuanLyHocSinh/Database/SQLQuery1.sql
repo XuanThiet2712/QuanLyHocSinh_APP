@@ -1,0 +1,100 @@
+CREATE DATABASE QLSV
+GO
+USE QLSV
+GO
+
+CREATE TABLE NhomQuyen (
+    MaNhom   NVARCHAR(20) PRIMARY KEY,
+    TenNhom  NVARCHAR(50) NOT NULL
+)
+CREATE TABLE ChucNang (
+    MaChucNang   NVARCHAR(30) PRIMARY KEY,
+    TenChucNang  NVARCHAR(100) NOT NULL
+)
+CREATE TABLE PhanQuyen (
+    MaNhom      NVARCHAR(20) NOT NULL,
+    MaChucNang  NVARCHAR(30) NOT NULL,
+    PRIMARY KEY (MaNhom, MaChucNang),
+    FOREIGN KEY (MaNhom) REFERENCES NhomQuyen(MaNhom),
+    FOREIGN KEY (MaChucNang) REFERENCES ChucNang(MaChucNang)
+)
+
+CREATE TABLE Khoa (
+    MaKhoa   NVARCHAR(10) PRIMARY KEY,
+    TenKhoa  NVARCHAR(100) NOT NULL
+)
+CREATE TABLE Lop (
+    MaLop   NVARCHAR(10) PRIMARY KEY,
+    TenLop  NVARCHAR(50) NOT NULL,
+    MaKhoa  NVARCHAR(10) NOT NULL REFERENCES Khoa(MaKhoa)
+)
+CREATE TABLE SinhVien (
+    MaSV      NVARCHAR(10) PRIMARY KEY,
+    HoTen     NVARCHAR(100) NOT NULL,
+    NgaySinh  DATE,
+    GioiTinh  NVARCHAR(3) CHECK (GioiTinh IN (N'Nam', N'Nữ')),
+    DiaChi    NVARCHAR(200),
+    Email     NVARCHAR(100),
+    MaLop     NVARCHAR(10) NOT NULL REFERENCES Lop(MaLop)
+)
+CREATE TABLE GiangVien (
+    MaGV    NVARCHAR(10) PRIMARY KEY,
+    HoTen   NVARCHAR(100) NOT NULL,
+    Email   NVARCHAR(100),
+    MaKhoa  NVARCHAR(10) NOT NULL REFERENCES Khoa(MaKhoa)
+)
+
+CREATE TABLE NguoiDung (
+    TenDangNhap  NVARCHAR(50) PRIMARY KEY,
+    MatKhauHash  NVARCHAR(100) NOT NULL,
+    Salt         NVARCHAR(50) NOT NULL,
+    HoatDong     BIT NOT NULL DEFAULT 1,
+    MaNhom       NVARCHAR(20) NOT NULL REFERENCES NhomQuyen(MaNhom),
+    MaSV         NVARCHAR(10) NULL REFERENCES SinhVien(MaSV),
+    MaGV         NVARCHAR(10) NULL REFERENCES GiangVien(MaGV),
+    CHECK (MaSV IS NULL OR MaGV IS NULL)
+)
+
+CREATE TABLE MonHoc (
+    MaMon     NVARCHAR(10) PRIMARY KEY,
+    TenMon    NVARCHAR(100) NOT NULL,
+    SoTinChi  INT NOT NULL CHECK (SoTinChi BETWEEN 1 AND 10),
+    MaKhoa    NVARCHAR(10) NOT NULL REFERENCES Khoa(MaKhoa)
+)
+CREATE TABLE HocKy (
+    MaHocKy   NVARCHAR(10) PRIMARY KEY,
+    TenHocKy  NVARCHAR(50) NOT NULL,
+    TuNgay    DATE NOT NULL,
+    DenNgay   DATE NOT NULL,
+    CHECK (DenNgay >= TuNgay)
+)
+CREATE TABLE LopHocPhan (
+    MaLHP      NVARCHAR(15) PRIMARY KEY,
+    MaMon      NVARCHAR(10) NOT NULL REFERENCES MonHoc(MaMon),
+    MaGV       NVARCHAR(10) NULL REFERENCES GiangVien(MaGV),
+    MaHocKy    NVARCHAR(10) NOT NULL REFERENCES HocKy(MaHocKy),
+    SiSoToiDa  INT NOT NULL DEFAULT 50 CHECK (SiSoToiDa > 0),
+    Thu        INT CHECK (Thu BETWEEN 2 AND 8),
+    TietBD     INT,
+    SoTiet     INT
+)
+CREATE TABLE DangKyHocPhan (
+    MaSV    NVARCHAR(10) NOT NULL REFERENCES SinhVien(MaSV),
+    MaLHP   NVARCHAR(15) NOT NULL REFERENCES LopHocPhan(MaLHP),
+    NgayDK  DATETIME NOT NULL DEFAULT GETDATE(),
+    DiemSo  FLOAT NULL CHECK (DiemSo BETWEEN 0 AND 10),
+    PRIMARY KEY (MaSV, MaLHP)
+)
+GO
+
+INSERT INTO NhomQuyen VALUES ('ADMIN', N'Quản trị'), ('GIAOVU', N'Giáo vụ'), ('GIANGVIEN', N'Giảng viên')
+INSERT INTO ChucNang VALUES
+('QL_NGUOIDUNG', N'Quản lý tài khoản'), ('QL_PHANQUYEN', N'Quản lý phân quyền'),
+('QL_DANHMUC', N'Quản lý danh mục'), ('QL_HOCPHAN', N'Quản lý học phần'),
+('DANGKY_HP', N'Đăng ký học phần'), ('NHAP_DIEM', N'Nhập điểm'),
+('XEM_BAOCAO', N'Xem báo cáo')
+INSERT INTO PhanQuyen SELECT 'ADMIN', MaChucNang FROM ChucNang
+INSERT INTO PhanQuyen VALUES
+('GIAOVU','QL_DANHMUC'), ('GIAOVU','QL_HOCPHAN'), ('GIAOVU','DANGKY_HP'), ('GIAOVU','XEM_BAOCAO'),
+('GIANGVIEN','NHAP_DIEM'), ('GIANGVIEN','XEM_BAOCAO')
+GO
