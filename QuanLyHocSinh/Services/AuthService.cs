@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using QLSV.Helpers;
+using QuanLyHocSinh;
 
 namespace QLSV.Services
 {
@@ -9,6 +10,7 @@ namespace QLSV.Services
         // Tạo tài khoản mới. Trả false nếu tên đã tồn tại.
         public bool TaoTaiKhoan(string user, string matKhau, string maNhom)
         {
+            
             using (var db = new QLSVDataContext())
             {
                 if (db.NguoiDungs.Any(p => p.TenDangNhap == user)) return false;
