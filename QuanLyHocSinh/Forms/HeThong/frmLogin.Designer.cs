@@ -31,7 +31,7 @@
             this.txtUser = new System.Windows.Forms.MaskedTextBox();
             this.txtPass = new System.Windows.Forms.MaskedTextBox();
             this.lblTieuDe = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
@@ -60,14 +60,14 @@
             this.lblTieuDe.TabIndex = 2;
             this.lblTieuDe.Text = "HỆ THỐNG ĐĂNG NHẬP";
             // 
-            // label2
+            // lblUser
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tên User : ";
+            this.lblUser.AutoSize = true;
+            this.lblUser.Location = new System.Drawing.Point(66, 39);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(72, 16);
+            this.lblUser.TabIndex = 3;
+            this.lblUser.Text = "Tên User : ";
             // 
             // label3
             // 
@@ -109,7 +109,7 @@
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.lblTieuDe);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUser);
@@ -128,7 +128,7 @@
         private System.Windows.Forms.MaskedTextBox txtUser;
         private System.Windows.Forms.MaskedTextBox txtPass;
         private System.Windows.Forms.Label lblTieuDe;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Button btnThoat;
