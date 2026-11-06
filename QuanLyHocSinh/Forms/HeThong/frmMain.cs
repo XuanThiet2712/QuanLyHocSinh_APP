@@ -78,5 +78,15 @@ namespace QuanLyHocSinh.Forms.HeThong
         {
             MoForm<QuanLyHocSinh.Forms.Enroll.frmDangKyHocPhan>();
         }
+
+        private void mnuNhapDiem_Click(object sender, EventArgs e)
+        {
+            MoForm<Grade.frmNhapDiem>();
+        }
+
+        private void mnuThongKe_Click(object sender, EventArgs e)
+        {
+            MoForm<Reports.frmDashboardThongKe>();
+        }
     }
 }

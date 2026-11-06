@@ -1,9 +1,9 @@
-﻿using QLSV.Services;
+﻿using QuanLyHocSinh.Services;
 using QuanLyHocSinh.Forms.HeThong;
 using System;
 using System.Windows.Forms;
 
-namespace QLSV
+namespace QuanLyHocSinh
 {
     static class Program
     {

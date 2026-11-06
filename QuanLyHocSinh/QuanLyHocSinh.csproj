@@ -108,6 +108,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -131,6 +132,12 @@
     <Compile Include="Forms\Enroll\frmDangKyHocPhan.Designer.cs">
       <DependentUpon>frmDangKyHocPhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Grade\frmNhapDiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Grade\frmNhapDiem.Designer.cs">
+      <DependentUpon>frmNhapDiem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HeThong\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,10 +153,12 @@
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\Session.cs" />
     <Compile Include="Models\DangKyDTO.cs" />
+    <Compile Include="Models\DiemDTO.cs" />
     <Compile Include="Models\HocKyDTO.cs" />
     <Compile Include="Models\LopDTO.cs" />
     <Compile Include="Models\LopHocPhanDTO.cs" />
     <Compile Include="Models\SinhVienDTO.cs" />
+    <Compile Include="Models\ThongKeDTO.cs" />
     <Compile Include="QLSV.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,14 +166,24 @@
     </Compile>
     <Compile Include="Models\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\frmDashboardThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmDashboardThongKe.Designer.cs">
+      <DependentUpon>frmDashboardThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\CatalogService.cs" />
     <Compile Include="Services\EnrollService.cs" />
+    <Compile Include="Services\GradeService.cs" />
     <EmbeddedResource Include="Forms\Catalog\frmSinhVien.resx">
       <DependentUpon>frmSinhVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Enroll\frmDangKyHocPhan.resx">
       <DependentUpon>frmDangKyHocPhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Grade\frmNhapDiem.resx">
+      <DependentUpon>frmNhapDiem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HeThong\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -181,6 +200,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\frmDashboardThongKe.resx">
+      <DependentUpon>frmDashboardThongKe.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="QLSV.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>QLSV.designer.cs</LastGenOutput>
@@ -209,9 +231,7 @@
   <ItemGroup>
     <Folder Include="Database\" />
     <Folder Include="Data\" />
-    <Folder Include="Forms\Grade\" />
     <Folder Include="Forms\Report\" />
-    <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

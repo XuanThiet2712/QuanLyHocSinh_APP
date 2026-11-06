@@ -48,6 +48,7 @@
             this.mnuBaoCao = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUser = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuThongKe = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +66,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(600, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -184,11 +185,14 @@
             // 
             this.mnuNhapDiem.Name = "mnuNhapDiem";
             this.mnuNhapDiem.Size = new System.Drawing.Size(78, 20);
-            this.mnuNhapDiem.Tag = "\tNHAP_DIEM";
+            this.mnuNhapDiem.Tag = "NHAP_DIEM";
             this.mnuNhapDiem.Text = "Nhập điểm";
+            this.mnuNhapDiem.Click += new System.EventHandler(this.mnuNhapDiem_Click);
             // 
             // mnuBaoCao
             // 
+            this.mnuBaoCao.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuThongKe});
             this.mnuBaoCao.Name = "mnuBaoCao";
             this.mnuBaoCao.Size = new System.Drawing.Size(61, 20);
             this.mnuBaoCao.Tag = "XEM_BAOCAO";
@@ -202,7 +206,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 344);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(600, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(784, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -212,11 +216,18 @@
             this.lblUser.Size = new System.Drawing.Size(118, 17);
             this.lblUser.Text = "toolStripStatusLabel1";
             // 
+            // mnuThongKe
+            // 
+            this.mnuThongKe.Name = "mnuThongKe";
+            this.mnuThongKe.Size = new System.Drawing.Size(180, 22);
+            this.mnuThongKe.Text = "Thống kê";
+            this.mnuThongKe.Click += new System.EventHandler(this.mnuThongKe_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(784, 366);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
@@ -256,5 +267,6 @@
         private System.Windows.Forms.ToolStripMenuItem mônHọcToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lớpHọcPhầnToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel lblUser;
+        private System.Windows.Forms.ToolStripMenuItem mnuThongKe;
     }
 }
