@@ -699,7 +699,7 @@ namespace QuanLyHocSinh
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDK", DbType="DateTime NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayDK", DbType="DateTime NOT NULL", IsDbGenerated=true)]
 		public System.DateTime NgayDK
 		{
 			get

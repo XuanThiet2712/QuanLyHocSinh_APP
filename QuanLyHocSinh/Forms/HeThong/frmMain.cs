@@ -23,7 +23,7 @@ namespace QuanLyHocSinh.Forms.HeThong
         {
             
             PhanQuyenMenu(menuStrip1.Items);
-            //lblUser.Text = "Xin chào: " + Session.TenDangNhap + "  |  Nhóm: " + Session.MaNhom;
+            lblUser.Text = "Xin chào: " + Session.TenDangNhap + "  |  Nhóm: " + Session.MaNhom;
         }
 
         private void PhanQuyenMenu(ToolStripItemCollection items)
@@ -44,6 +44,8 @@ namespace QuanLyHocSinh.Forms.HeThong
             Application.Restart();   // khởi động lại, quay về form đăng nhập
         }
 
+
+
         private void mnuThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -62,12 +64,19 @@ namespace QuanLyHocSinh.Forms.HeThong
             }
             T frm = new T();
             frm.MdiParent = this;
+            this.Height = frm.Height + 100;
+            this.Width = frm.Width + 100;
             frm.Show();
         }
 
         private void mnuSinhVien_Click(object sender, EventArgs e)
         {
             MoForm<QLSV.Forms.Catalog.frmSinhVien>();
+        }
+
+        private void mnuDangKy_Click(object sender, EventArgs e)
+        {
+            MoForm<QuanLyHocSinh.Forms.Enroll.frmDangKyHocPhan>();
         }
     }
 }

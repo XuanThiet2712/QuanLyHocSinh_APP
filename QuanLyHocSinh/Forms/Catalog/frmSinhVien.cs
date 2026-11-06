@@ -15,6 +15,7 @@ namespace QLSV.Forms.Catalog
         public frmSinhVien()
         {
             InitializeComponent();
+            dgvSinhVien.AutoGenerateColumns = false;
         }
 
         private void frmSinhVien_Load(object sender, EventArgs e)

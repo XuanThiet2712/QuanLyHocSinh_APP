@@ -25,7 +25,7 @@
     <Type Name="DangKyHocPhan">
       <Column Name="MaSV" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaLHP" Type="System.String" DbType="NVarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="NgayDK" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NgayDK" AutoSync="Never" Type="System.DateTime" DbType="DateTime NOT NULL" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="DiemSo" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="SinhVien_DangKyHocPhan" Member="SinhVien" ThisKey="MaSV" OtherKey="MaSV" Type="SinhVien" IsForeignKey="true" />
       <Association Name="LopHocPhan_DangKyHocPhan" Member="LopHocPhan" ThisKey="MaLHP" OtherKey="MaLHP" Type="LopHocPhan" IsForeignKey="true" />

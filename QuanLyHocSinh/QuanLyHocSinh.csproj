@@ -107,6 +107,7 @@
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -118,6 +119,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Catalog\frmSinhVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Catalog\frmSinhVien.Designer.cs">
+      <DependentUpon>frmSinhVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Enroll\frmDangKyHocPhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Enroll\frmDangKyHocPhan.Designer.cs">
+      <DependentUpon>frmDangKyHocPhan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\HeThong\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,7 +145,10 @@
     </Compile>
     <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="Helpers\Session.cs" />
+    <Compile Include="Models\DangKyDTO.cs" />
+    <Compile Include="Models\HocKyDTO.cs" />
     <Compile Include="Models\LopDTO.cs" />
+    <Compile Include="Models\LopHocPhanDTO.cs" />
     <Compile Include="Models\SinhVienDTO.cs" />
     <Compile Include="QLSV.designer.cs">
       <AutoGen>True</AutoGen>
@@ -142,6 +158,14 @@
     <Compile Include="Models\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\CatalogService.cs" />
+    <Compile Include="Services\EnrollService.cs" />
+    <EmbeddedResource Include="Forms\Catalog\frmSinhVien.resx">
+      <DependentUpon>frmSinhVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Enroll\frmDangKyHocPhan.resx">
+      <DependentUpon>frmDangKyHocPhan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\HeThong\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,8 +209,6 @@
   <ItemGroup>
     <Folder Include="Database\" />
     <Folder Include="Data\" />
-    <Folder Include="Forms\Catalog\" />
-    <Folder Include="Forms\Enroll\" />
     <Folder Include="Forms\Grade\" />
     <Folder Include="Forms\Report\" />
     <Folder Include="Reports\" />
