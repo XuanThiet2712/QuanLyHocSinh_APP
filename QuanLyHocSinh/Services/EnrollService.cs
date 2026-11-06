@@ -183,5 +183,32 @@ namespace QLSV.Services
                 return null;
             }
         }
+
+        public List<DangKyBaoCaoDTO> LayDangKyTheoKhoang(DateTime tuNgay, DateTime denNgay, string maLop)
+        {
+            DateTime tu = tuNgay.Date;
+            DateTime den = denNgay.Date.AddDays(1);   // lấy đến hết ngày cuối
+
+            using (var db = new QLSVDataContext())
+            {
+                var q = db.DangKyHocPhans.Where(p => p.NgayDK >= tu && p.NgayDK < den);
+
+                if (!string.IsNullOrEmpty(maLop))
+                    q = q.Where(p => p.SinhVien.MaLop == maLop);
+
+                return q.OrderBy(p => p.NgayDK).ThenBy(p => p.MaSV)
+                    .Select(p => new DangKyBaoCaoDTO
+                    {
+                        NgayDK = p.NgayDK,
+                        MaSV = p.MaSV,
+                        HoTen = p.SinhVien.HoTen,
+                        TenLop = p.SinhVien.Lop.TenLop,
+                        MaLHP = p.MaLHP,
+                        TenMon = p.LopHocPhan.MonHoc.TenMon,
+                        SoTinChi = p.LopHocPhan.MonHoc.SoTinChi
+                    })
+                    .ToList();
+            }
+        }
     }
 }

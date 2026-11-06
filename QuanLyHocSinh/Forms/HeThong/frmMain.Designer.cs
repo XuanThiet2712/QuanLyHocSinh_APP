@@ -49,6 +49,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.mnuThongKe = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRptBangDiem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRptDangKy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -192,7 +194,9 @@
             // mnuBaoCao
             // 
             this.mnuBaoCao.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuThongKe});
+            this.mnuThongKe,
+            this.mnuRptBangDiem,
+            this.mnuRptDangKy});
             this.mnuBaoCao.Name = "mnuBaoCao";
             this.mnuBaoCao.Size = new System.Drawing.Size(61, 20);
             this.mnuBaoCao.Tag = "XEM_BAOCAO";
@@ -222,6 +226,20 @@
             this.mnuThongKe.Size = new System.Drawing.Size(180, 22);
             this.mnuThongKe.Text = "Thống kê";
             this.mnuThongKe.Click += new System.EventHandler(this.mnuThongKe_Click);
+            // 
+            // mnuRptBangDiem
+            // 
+            this.mnuRptBangDiem.Name = "mnuRptBangDiem";
+            this.mnuRptBangDiem.Size = new System.Drawing.Size(180, 22);
+            this.mnuRptBangDiem.Text = "Bảng điểm";
+            this.mnuRptBangDiem.Click += new System.EventHandler(this.mnuRptBangDiem_Click);
+            // 
+            // mnuRptDangKy
+            // 
+            this.mnuRptDangKy.Name = "mnuRptDangKy";
+            this.mnuRptDangKy.Size = new System.Drawing.Size(180, 22);
+            this.mnuRptDangKy.Text = "Đăng ký";
+            this.mnuRptDangKy.Click += new System.EventHandler(this.mnuRptDangKy_Click);
             // 
             // frmMain
             // 
@@ -268,5 +286,7 @@
         private System.Windows.Forms.ToolStripMenuItem lớpHọcPhầnToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel lblUser;
         private System.Windows.Forms.ToolStripMenuItem mnuThongKe;
+        private System.Windows.Forms.ToolStripMenuItem mnuRptBangDiem;
+        private System.Windows.Forms.ToolStripMenuItem mnuRptDangKy;
     }
 }

@@ -88,5 +88,15 @@ namespace QuanLyHocSinh.Forms.HeThong
         {
             MoForm<Reports.frmDashboardThongKe>();
         }
+
+        private void mnuRptBangDiem_Click(object sender, EventArgs e)
+        {
+            MoForm<QLSV.Forms.Report.frmReportBangDiem>();
+        }
+
+        private void mnuRptDangKy_Click(object sender, EventArgs e)
+        {
+            MoForm<Report.frmReportDangKy>();
+        }
     }
 }

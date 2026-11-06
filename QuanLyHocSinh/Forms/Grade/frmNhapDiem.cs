@@ -25,8 +25,8 @@ namespace QuanLyHocSinh.Forms.Grade
 
         private void frmNhapDiem_Load(object sender, EventArgs e)
         {
-            dgvLHP.AutoGenerateColumns = false;
             dgvDiem.AutoGenerateColumns = false;
+            dgvLHP.AutoGenerateColumns = false;
 
             cboHocKy.DataSource = enroll.LayDanhSachHocKy();
             cboHocKy.DisplayMember = "TenHocKy";
@@ -41,8 +41,8 @@ namespace QuanLyHocSinh.Forms.Grade
             string maHocKy = cboHocKy.SelectedValue as string;
             if (maHocKy == null) return;
 
-            dgvLHP.DataSource = enroll.LayLopHocPhan(maHocKy);
-            dgvDiem.DataSource = null;
+            dgvDiem.DataSource = enroll.LayLopHocPhan(maHocKy);
+            dgvLHP.DataSource = null;
             dsDiem = null;
             maLHPHienTai = null;
             lblThongTin.Text = "Hãy chọn một lớp học phần";
@@ -57,12 +57,12 @@ namespace QuanLyHocSinh.Forms.Grade
         private void dgvLHP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
-            var lop = dgvLHP.Rows[e.RowIndex].DataBoundItem as LopHocPhanDTO;
+            var lop = dgvDiem.Rows[e.RowIndex].DataBoundItem as LopHocPhanDTO;
             if (lop == null) return;
 
             maLHPHienTai = lop.MaLHP;
             dsDiem = grade.LayDanhSachDiem(lop.MaLHP);
-            dgvDiem.DataSource = dsDiem;
+            dgvLHP.DataSource = dsDiem;
             lblThongTin.Text = "Lớp " + lop.MaLHP + " - " + lop.TenMon + " (" + dsDiem.Count + " sinh viên)";
         }
 
@@ -74,7 +74,7 @@ namespace QuanLyHocSinh.Forms.Grade
                 return;
             }
 
-            dgvDiem.EndEdit();   // chốt ô đang gõ dở
+            dgvLHP.EndEdit();   // chốt ô đang gõ dở
 
             string loi = grade.LuuDiem(maLHPHienTai, dsDiem);
             if (loi != null)

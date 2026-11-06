@@ -1,5 +1,6 @@
-﻿using QuanLyHocSinh.Models;
+﻿using QLSV.Models;
 using QuanLyHocSinh;
+using QuanLyHocSinh.Models;
 using QuanLyHocSinh.Models;
 using System;
 using System.Collections.Generic;
@@ -203,5 +204,38 @@ namespace QuanLyHocSinh.Services
                     .ToList();
             }
         }
+
+        public List<BangDiemDTO> LayBangDiem(string maSV)
+        {
+            using (var db = new QLSVDataContext())
+            {
+                var ds = db.DangKyHocPhans
+                    .Where(p => p.MaSV == maSV)
+                    .OrderBy(p => p.LopHocPhan.HocKy.TuNgay)
+                    .ThenBy(p => p.MaLHP)
+                    .Select(p => new
+                    {
+                        p.MaLHP,
+                        p.LopHocPhan.MonHoc.TenMon,
+                        p.LopHocPhan.MonHoc.SoTinChi,
+                        p.LopHocPhan.HocKy.TenHocKy,
+                        p.DiemSo
+                    })
+                    .ToList();
+
+                return ds.Select(x => new BangDiemDTO
+                {
+                    MaLHP = x.MaLHP,
+                    TenMon = x.TenMon,
+                    SoTinChi = x.SoTinChi,
+                    TenHocKy = x.TenHocKy,
+                    DiemSo = x.DiemSo,
+                    DiemHienThi = x.DiemSo.HasValue ? x.DiemSo.Value.ToString("0.0") : "Chưa có",
+                    XepLoai = x.DiemSo.HasValue ? XepLoai(x.DiemSo.Value) : ""
+                }).ToList();
+            }
+        }
+
+
     }
 }
